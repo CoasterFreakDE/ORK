@@ -11,9 +11,9 @@ import cloud.melion.extensions.send
 
 fun createTable(vararg tables: Class<*>) {
   tables.forEach { table ->
-    if (!table.isAnnotationPresent(PrimaryKey::class.java)) {
+    if (!table.isAnnotationPresent(PrimaryKey::class.java))
       throw NoPrimaryKeyFoundError(table.simpleName)
-    }
+
     val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys
     val constructor =
         getConstructor(table, primaryKeys) ?: throw NoConstructorFoundError(table.simpleName)
@@ -21,14 +21,15 @@ fun createTable(vararg tables: Class<*>) {
     val sql = StringBuilder("CREATE TABLE IF NOT EXISTS ${table.simpleName}(")
 
     constructor.parameters.forEachIndexed { index, parameter ->
-      if (constructor.parameterAnnotations[index].isEmpty()) {
+      if (constructor.parameterAnnotations[index].isEmpty())
         throw WrongAnnotaionError(table.simpleName)
-      }
+
       val annotation =
           constructor.parameterAnnotations[index].find { annotation ->
             annotation is FieldName
           } as FieldName?
               ?: throw WrongAnnotaionError(table.simpleName)
+
       sql.append("${getNameOfParam(annotation)} ${getSQLTypeOrDefault(annotation, parameter.type)}")
       try {
         val defaultValue = getDefaultValueOfParam(annotation)
