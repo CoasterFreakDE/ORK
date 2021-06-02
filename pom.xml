@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ork</artifactId>
-    <groupId>com.github.F1b3rDEV</groupId>
-    <version>0.3-SNAPSHOT</version>
+    <groupId>com.github.CoasterFreakDE</groupId>
+    <version>0.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub F1b3rDEV Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/F1b3rDEV/ork</url>
+            <name>GitHub CoasterFreakDE Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/CoasterFreakDE/ork</url>
         </repository>
     </distributionManagement>
 
