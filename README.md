@@ -129,3 +129,8 @@ Now here comes the fun part. As you will use these functions most of the time th
 ### Contributing
 
 Feel free to leave a pull request or ticket for feature requests.
+
+### Code Coverage
+
+Try to cover as much as possible with tests.
+Check [here](https://f1b3rdev.github.io/ORK/target/jacoco-ut/)
