@@ -18,7 +18,7 @@ repositories {
 #### Add it to your dependencies
 ```
 dependencies {
-	compile 'com.github.F1b3rDEV:ork:0.1-SNAPSHOT'
+	compile 'com.github.F1b3rDEV:ork:0.2-SNAPSHOT'
 }
 ```
 
@@ -39,7 +39,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.F1b3rDEV</groupId>
 	<artifactId>ork</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.2-SNAPSHOT</version>
 </dependency>
 ```
 
