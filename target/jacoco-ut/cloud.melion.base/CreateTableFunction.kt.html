@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreateTableFunction.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ORK</a> &gt; <a href="index.source.html" class="el_package">cloud.melion.base</a> &gt; <span class="el_source">CreateTableFunction.kt</span></div><h1>CreateTableFunction.kt</h1><pre class="source lang-java linenums">/* (C)2021 */
+package cloud.melion.base
+
+import cloud.melion.MySQL.onUpdate
+import cloud.melion.annotations.FieldName
+import cloud.melion.annotations.PrimaryKey
+import cloud.melion.errors.NoConstructorFoundError
+import cloud.melion.errors.NoPrimaryKeyFoundError
+import cloud.melion.errors.WrongAnnotaionError
+import cloud.melion.extensions.send
+
+fun createTable(vararg tables: Class&lt;*&gt;) {
+<span class="fc" id="L13">  tables.forEach { table -&gt;</span>
+<span class="fc bfc" id="L14" title="All 2 branches covered.">    if (!table.isAnnotationPresent(PrimaryKey::class.java)) {</span>
+<span class="fc" id="L15">      throw NoPrimaryKeyFoundError(table.simpleName)</span>
+    }
+<span class="fc" id="L17">    val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys</span>
+<span class="fc" id="L18">    val constructor =</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        getConstructor(table, primaryKeys) ?: throw NoConstructorFoundError(table.simpleName)</span>
+
+<span class="fc" id="L21">    val sql = StringBuilder(&quot;CREATE TABLE IF NOT EXISTS ${table.simpleName}(&quot;)</span>
+
+<span class="fc" id="L23">    constructor.parameters.forEachIndexed { index, parameter -&gt;</span>
+<span class="fc bfc" id="L24" title="All 4 branches covered.">      if (constructor.parameterAnnotations[index].isEmpty()) {</span>
+<span class="fc" id="L25">        throw WrongAnnotaionError(table.simpleName)</span>
+      }
+<span class="fc" id="L27">      val annotation =</span>
+<span class="fc bfc" id="L28" title="All 6 branches covered.">          constructor.parameterAnnotations[index].find { annotation -&gt;</span>
+<span class="fc" id="L29">            annotation is FieldName</span>
+          } as FieldName?
+<span class="fc" id="L31">              ?: throw WrongAnnotaionError(table.simpleName)</span>
+<span class="fc" id="L32">      sql.append(&quot;${getNameOfParam(annotation)} ${getSQLTypeOrDefault(annotation, parameter.type)}&quot;)</span>
+<span class="fc" id="L33">      try {</span>
+<span class="fc" id="L34">        val defaultValue = getDefaultValueOfParam(annotation)</span>
+<span class="fc" id="L35">        sql.append(&quot; DEFAULT '$defaultValue'&quot;)</span>
+<span class="fc" id="L36">      } catch (npe: NullPointerException) {}</span>
+<span class="fc" id="L37">      sql.append(&quot;, &quot;)</span>
+<span class="fc" id="L38">    }</span>
+<span class="fc" id="L39">    sql.append(&quot;PRIMARY KEY(&quot;)</span>
+<span class="fc" id="L40">    primaryKeys.forEachIndexed { index, key -&gt;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">      if (index &gt;= primaryKeys.size - 1) {</span>
+<span class="fc" id="L42">        sql.append(&quot;$key))&quot;)</span>
+      } else {
+<span class="fc" id="L44">        sql.append(&quot;$key, &quot;)</span>
+      }
+<span class="fc" id="L46">    }</span>
+
+<span class="fc" id="L48">    &quot;Output SQL: `$sql`&quot;.send()</span>
+<span class="fc" id="L49">    onUpdate(sql.toString())</span>
+<span class="fc" id="L50">  }</span>
+<span class="fc" id="L51">}</span>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

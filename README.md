@@ -17,7 +17,7 @@ repositories {
 #### Add it to your dependencies
 ```
 dependencies {
-    compile 'com.github.F1b3rDEV:ork:0.1-SNAPSHOT'
+	compile 'com.github.F1b3rDEV:ork:0.1-SNAPSHOT'
 }
 ```
 
@@ -50,7 +50,7 @@ dependencies {
 - [X] Create Tables from DataClass
 - [X] Save (INSERT OR UPDATE) DataClasses directly to your database with `.save()`
 - [X] Delete Data with `.delete()`
-- [ ] Select Data from database 
+- [ ] Select Data from database
 - [ ] References (Foreign Keys)
 - [ ] Move the PrimaryKey Annotation directly to the field
 
@@ -62,15 +62,15 @@ Connecting to your database is easy. Just add your credentials in a "connect" bl
 
 To use sqlite just use `driver { "sqlite" }` and `host { "your.db" }`
 ```kotlin
-    connect {
-        host { "localhost" }
-        port { 3306 }
-        driver { "mariadb" } // Supported: mysql, mariadb, sqlite
-        database { "database" }
-        username { "root" }
-        password { "1234" }
-        autoReconnect { true }
-    }
+	connect {
+		host { "localhost" }
+		port { 3306 }
+		driver { "mariadb" } // Supported: mysql, mariadb, sqlite
+		database { "database" }
+		username { "root" }
+		password { "1234" }
+		autoReconnect { true }
+	}
 ```
 
 ---
@@ -86,19 +86,19 @@ A Tableclass consists of 3 different parts.
 - FieldNames
 
 ```kotlin
-    @PrimaryKey("name", "gamegroup")
-    data class MyTable(
-    
-        @FieldName("name")
-        val name: String = "Peter",
-        
-        @FieldName("gamegroup")
-        val gamegroup: String = "Orks",
-        
-        @FieldName("xp")
-        val xp: Int = 0,
-        
-    ) : Table
+	@PrimaryKey("name", "gamegroup")
+	data class MyTable(
+
+		@FieldName("name")
+		val name: String = "Peter",
+
+		@FieldName("gamegroup")
+		val gamegroup: String = "Orks",
+
+		@FieldName("xp")
+		val xp: Int = 0,
+
+	) : Table
 ```
 
 #### Create the Table
@@ -107,7 +107,7 @@ This is as simple as putting butter on bread.
 You can add all your tables into a single statement by separating them with a `,`
 
 ```kotlin
-    createTable(MyTable::class.java)
+	createTable(MyTable::class.java)
 ```
 
 ### Saving/Updating/Deleting data
@@ -115,9 +115,9 @@ You can add all your tables into a single statement by separating them with a `,
 Now here comes the fun part. As you will use these functions most of the time they need to be super simple.
 
 ```kotlin
-    val myDataToSave = MyTable("Hulk")
-    myDataToSave.save() // Insert or update data to the database
-    myDataToSave.delete() // Delete data from the database
+	val myDataToSave = MyTable("Hulk")
+	myDataToSave.save() // Insert or update data to the database
+	myDataToSave.delete() // Delete data from the database
 ```
 
 ### Selecting / Searching for data

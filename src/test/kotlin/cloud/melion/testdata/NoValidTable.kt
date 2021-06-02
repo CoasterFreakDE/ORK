@@ -23,6 +23,5 @@ annotation class TestAnnotation
 class NoValidTableWithWrongAnnotation(
     @FieldName("nope")
     val nope: String,
-    @TestAnnotation
-    val whatIsThis: String
+    @TestAnnotation val whatIsThis: String
 ) : Table

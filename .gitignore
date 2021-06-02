@@ -1,3 +1,5 @@
 .idea
-target
-!target/jacoco-ut
+!target/
+
+target/*
+!target/jacoco-ut/

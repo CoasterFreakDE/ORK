@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConnectionSettingsBuilder.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ORK</a> &gt; <a href="index.source.html" class="el_package">cloud.melion.builder</a> &gt; <span class="el_source">ConnectionSettingsBuilder.kt</span></div><h1>ConnectionSettingsBuilder.kt</h1><pre class="source lang-java linenums">/* (C)2021 */
+package cloud.melion.builder
+
+import cloud.melion.data.ConnectionSettings
+
+<span class="fc" id="L6">class ConnectionSettingsBuilder {</span>
+<span class="fc" id="L7">  private var host: String = &quot;&quot;</span>
+<span class="fc" id="L8">  private var database: String = &quot;&quot;</span>
+<span class="fc" id="L9">  private var username: String = &quot;&quot;</span>
+<span class="fc" id="L10">  private var password: String = &quot;&quot;</span>
+<span class="fc" id="L11">  private var driver: String = &quot;mysql&quot;</span>
+<span class="fc" id="L12">  private var port: Int = 3306</span>
+<span class="fc" id="L13">  private var autoReconnect: Boolean = true</span>
+
+  fun host(lambda: () -&gt; String) {
+<span class="fc" id="L16">    this.host = lambda()</span>
+<span class="fc" id="L17">  }</span>
+  fun database(lambda: () -&gt; String) {
+<span class="nc" id="L19">    this.database = lambda()</span>
+<span class="nc" id="L20">    println(this.database)</span>
+<span class="nc" id="L21">  }</span>
+  fun username(lambda: () -&gt; String) {
+<span class="nc" id="L23">    this.username = lambda()</span>
+<span class="nc" id="L24">  }</span>
+  fun password(lambda: () -&gt; String) {
+<span class="nc" id="L26">    this.password = lambda()</span>
+<span class="nc" id="L27">  }</span>
+  fun driver(lambda: () -&gt; String) {
+<span class="fc" id="L29">    this.driver = lambda()</span>
+<span class="fc" id="L30">  }</span>
+  fun port(lambda: () -&gt; Int) {
+<span class="nc" id="L32">    this.port = lambda()</span>
+<span class="nc" id="L33">  }</span>
+  fun autoReconnect(lambda: () -&gt; Boolean) {
+<span class="nc" id="L35">    this.autoReconnect = lambda()</span>
+<span class="nc" id="L36">  }</span>
+<span class="fc" id="L37">  fun build() = ConnectionSettings(host, database, username, password, driver, port, autoReconnect)</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
