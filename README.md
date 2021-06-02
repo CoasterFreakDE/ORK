@@ -6,7 +6,7 @@ ORK is a small project aiming to utilizing Kotlin dataclasses to use as ORM Syst
 
 ## Import in your Gradle/Maven Project
 
-### Gradle:
+### 🐘 - Gradle:
 
 #### Add Jitpack as Maven repo
 ```
