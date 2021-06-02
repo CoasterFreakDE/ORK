@@ -82,7 +82,7 @@ To  create a table there are two steps you need to follow.
 #### Create a data class
 
 A Tableclass consists of 3 different parts.
-- Implementing the interface `Table`
+- Implementing the interface `ITable`
 - At least **one** PrimaryKey
 - FieldNames
 
@@ -99,7 +99,7 @@ A Tableclass consists of 3 different parts.
 		@FieldName("xp")
 		val xp: Int = 0,
 
-	) : Table
+	) : ITable
 ```
 
 #### Create the Table
