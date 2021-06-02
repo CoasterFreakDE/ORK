@@ -3,9 +3,9 @@ package cloud.melion.extensions
 
 import cloud.melion.annotations.PrimaryKey
 import cloud.melion.base.getConstructor
-import cloud.melion.interfaces.Table
+import cloud.melion.interfaces.ITable
 
-fun <T : Table> T.delete(): T {
+fun <T : ITable> T.delete(): T {
   val table = this::class.java
   assert(table.isAnnotationPresent(PrimaryKey::class.java))
   val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys
