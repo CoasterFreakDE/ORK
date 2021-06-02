@@ -5,10 +5,10 @@ import cloud.melion.annotations.FieldName
 import cloud.melion.annotations.PrimaryKey
 import cloud.melion.base.getConstructor
 import cloud.melion.base.update
-import cloud.melion.interfaces.Table
+import cloud.melion.interfaces.ITable
 import kotlin.reflect.jvm.kotlinProperty
 
-fun &lt;T : Table&gt; T.save(): T {
+fun &lt;T : ITable&gt; T.save(): T {
 <span class="fc" id="L12">  val table = this::class.java</span>
 <span class="pc bpc" id="L13" title="2 of 4 branches missed.">  assert(table.isAnnotationPresent(PrimaryKey::class.java))</span>
 <span class="fc" id="L14">  val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys</span>
