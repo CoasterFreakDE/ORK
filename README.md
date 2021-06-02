@@ -1,4 +1,4 @@
-# <img align="left" src="images/ork.png"> ORK: Object Relational Mapping for Kotlin
+# <img align="left" width="100px" src="images/ork.png"> ORK: Object Relational Mapping for Kotlin
 
 ![https://jitpack.io/v/F1b3rDEV/ORK](https://jitpack.io/v/F1b3rDEV/ORK.svg) ![Repo Size](https://img.shields.io/github/repo-size/F1b3rDEV/ORK) ![Contributors](https://img.shields.io/github/contributors/F1b3rDEV/ORK)
 
