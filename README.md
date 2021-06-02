@@ -1,6 +1,6 @@
 # <img align="left" width="100px" src="images/ork.png"> ORK: Object Relational Mapping for Kotlin
 
-[![Jitpack](https://jitpack.io/v/F1b3rDEV/ORK.svg)](https://jitpack.io/#F1b3rDEV/ORK) ![Repo Size](https://img.shields.io/github/repo-size/F1b3rDEV/ORK) ![Contributors](https://img.shields.io/github/contributors/F1b3rDEV/ORK) [![Discord](https://img.shields.io/discord/849650088518090813?label=Discord)](https://discord.gg/PEqVSTwy2K)
+[![Jitpack](https://jitpack.io/v/CoasterFreakDE/ORK.svg)](https://jitpack.io/#CoasterFreakDE/ORK) ![Repo Size](https://img.shields.io/github/repo-size/CoasterFreakDE/ORK) ![Contributors](https://img.shields.io/github/contributors/CoasterFreakDE/ORK) [![Discord](https://img.shields.io/discord/849650088518090813?label=Discord)](https://discord.gg/PEqVSTwy2K)
 
 ORK is a small project aiming to utilizing Kotlin dataclasses to use as ORM System
 
@@ -18,7 +18,7 @@ repositories {
 #### Add it to your dependencies
 ```
 dependencies {
-	compile 'com.github.F1b3rDEV:ork:0.3-SNAPSHOT'
+	compile 'com.github.CoasterFreakDE:ork:0.3-SNAPSHOT'
 }
 ```
 
@@ -37,7 +37,7 @@ dependencies {
 #### Add it to your dependencies
 ```
 <dependency>
-	<groupId>com.github.F1b3rDEV</groupId>
+	<groupId>com.github.CoasterFreakDE</groupId>
 	<artifactId>ork</artifactId>
 	<version>0.3-SNAPSHOT</version>
 </dependency>
@@ -133,4 +133,4 @@ Feel free to leave a pull request or ticket for feature requests.
 ### Code Coverage
 
 Try to cover as much as possible with tests.
-Check [here](https://f1b3rdev.github.io/ORK/target/jacoco-ut/)
+Check [here](https://CoasterFreakDE.github.io/ORK/target/jacoco-ut/)
