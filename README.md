@@ -1,6 +1,6 @@
 # <img align="left" width="100px" src="images/ork.png"> ORK: Object Relational Mapping for Kotlin
 
-[![Jitpack](https://jitpack.io/v/F1b3rDEV/ORK.svg)](https://jitpack.io/#F1b3rDEV/ORK) ![Repo Size](https://img.shields.io/github/repo-size/F1b3rDEV/ORK) ![Contributors](https://img.shields.io/github/contributors/F1b3rDEV/ORK)
+[![Jitpack](https://jitpack.io/v/F1b3rDEV/ORK.svg)](https://jitpack.io/#F1b3rDEV/ORK) ![Repo Size](https://img.shields.io/github/repo-size/F1b3rDEV/ORK) ![Contributors](https://img.shields.io/github/contributors/F1b3rDEV/ORK) [![Discord](https://img.shields.io/discord/849650088518090813?label=Discord)](https://discord.gg/PEqVSTwy2K)
 
 ORK is a small project aiming to utilizing Kotlin dataclasses to use as ORM System
 
