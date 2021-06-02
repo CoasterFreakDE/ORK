@@ -2,4 +2,4 @@
 package cloud.melion.interfaces
 
 /** Just an empty interface for all tables */
-interface Table
+interface ITable

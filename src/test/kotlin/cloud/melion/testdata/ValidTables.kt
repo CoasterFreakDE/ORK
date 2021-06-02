@@ -3,14 +3,14 @@ package cloud.melion.testdata
 
 import cloud.melion.annotations.FieldName
 import cloud.melion.annotations.PrimaryKey
-import cloud.melion.interfaces.Table
+import cloud.melion.interfaces.ITable
 import java.util.*
 
 @PrimaryKey("uuid")
 data class ValidTables(
     @FieldName("uuid")
     val uuid: UUID = UUID.randomUUID()
-) : Table
+) : ITable
 
 @PrimaryKey("uuid")
 data class ValidTableWithMultipleFields(
@@ -18,7 +18,7 @@ data class ValidTableWithMultipleFields(
     val uuid: UUID = UUID.randomUUID(),
     @FieldName("name", "Peter")
     val name: String = "Peter"
-) : Table
+) : ITable
 
 @PrimaryKey("name", "gamegroup")
 data class ValidTableWithMultipleKeys(
@@ -28,4 +28,4 @@ data class ValidTableWithMultipleKeys(
     val gamegroup: String = "Orks",
     @FieldName("xp", "0")
     val xp: Int = 0,
-) : Table
+) : ITable

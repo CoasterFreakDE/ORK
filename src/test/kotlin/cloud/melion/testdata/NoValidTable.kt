@@ -3,19 +3,19 @@ package cloud.melion.testdata
 
 import cloud.melion.annotations.FieldName
 import cloud.melion.annotations.PrimaryKey
-import cloud.melion.interfaces.Table
+import cloud.melion.interfaces.ITable
 
-class NoValidTable : Table
+class NoValidTable : ITable
 
 @PrimaryKey("nope")
-class NoValidTableWithPrimaryKeys : Table
+class NoValidTableWithPrimaryKeys : ITable
 
 @PrimaryKey("nope")
 class NoValidTableWithWrongFieldNames(
     @FieldName("nope")
     val nope: String,
     val whatIsThis: String
-) : Table
+) : ITable
 
 annotation class TestAnnotation
 
@@ -24,4 +24,4 @@ class NoValidTableWithWrongAnnotation(
     @FieldName("nope")
     val nope: String,
     @TestAnnotation val whatIsThis: String
-) : Table
+) : ITable
