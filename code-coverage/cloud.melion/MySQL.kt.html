@@ -60,5 +60,15 @@ object MySQL {
 <span class="nc" id="L60">      e.printStackTrace()</span>
     }
 <span class="nc" id="L62">  }</span>
+
+  fun onQuery(sql: String): ResultSet? {
+<span class="fc" id="L65">    try {</span>
+<span class="fc" id="L66">      val stmt = conn!!.createStatement()</span>
+<span class="fc" id="L67">      return stmt.executeQuery(sql)</span>
+<span class="fc" id="L68">    } catch (e: Exception) {</span>
+<span class="fc" id="L69">      e.printStackTrace()</span>
+    }
+<span class="fc" id="L71">    return null</span>
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
