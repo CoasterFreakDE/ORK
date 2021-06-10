@@ -77,9 +77,6 @@ class SearchTest {
       }
     }
 
-
-    select<ValidTables> {
-      uuid = UUID.randomUUID()
-    }
+    select<ValidTables> { uuid = UUID.randomUUID() }
   }
 }

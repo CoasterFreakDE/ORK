@@ -6,7 +6,7 @@
 
     <artifactId>ork</artifactId>
     <groupId>com.github.CoasterFreakDE</groupId>
-    <version>0.6-Snapshot</version>
+    <version>0.7-Snapshot</version>
     <packaging>jar</packaging>
 
     <distributionManagement>

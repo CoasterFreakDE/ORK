@@ -3,22 +3,21 @@ package cloud.melion.extensions
 
 import cloud.melion.annotations.PrimaryKey
 import cloud.melion.base.getConstructor
+import cloud.melion.base.update
 import cloud.melion.interfaces.ITable
 import kotlin.reflect.jvm.kotlinProperty
 
 fun &lt;T : ITable&gt; T.delete(): T {
-<span class="nc" id="L10">  val table = this::class.java</span>
-<span class="nc bnc" id="L11" title="All 4 branches missed.">  assert(table.isAnnotationPresent(PrimaryKey::class.java))</span>
-<span class="nc" id="L12">  val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys</span>
-<span class="nc" id="L13">  val constructor = getConstructor(table, primaryKeys)</span>
+<span class="nc" id="L11">  val table = this::class.java</span>
+<span class="nc bnc" id="L12" title="All 4 branches missed.">  assert(table.isAnnotationPresent(PrimaryKey::class.java))</span>
+<span class="nc" id="L13">  val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys</span>
+<span class="nc" id="L14">  val constructor = getConstructor(table, primaryKeys)</span>
 
-<span class="nc bnc" id="L15" title="All 2 branches missed.">  if (constructor == null) {</span>
-<span class="nc" id="L16">    println(&quot;No Constructor found for ${table.simpleName}&quot;)</span>
-<span class="nc" id="L17">    return this</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">  if (constructor == null) {</span>
+<span class="nc" id="L17">    println(&quot;No Constructor found for ${table.simpleName}&quot;)</span>
+<span class="nc" id="L18">    return this</span>
   }
 
-<<<<<<< HEAD
-<span class="nc" id="L20">  println(&quot;Deleting ${table.simpleName}&quot;)</span>
 <span class="nc" id="L21">  val sql = StringBuilder(&quot;DELETE FROM ${table.simpleName} WHERE &quot;)</span>
 
 <span class="nc" id="L23">  primaryKeys.forEachIndexed { index, key -&gt;</span>
@@ -35,20 +34,7 @@ fun &lt;T : ITable&gt; T.delete(): T {
 <span class="nc" id="L34">  }</span>
 
 <span class="nc" id="L36">  &quot;Output SQL: `$sql`&quot;.send()</span>
-<span class="nc" id="L37">  return this</span>
-=======
-<span class="nc" id="L19">  val sql = StringBuilder(&quot;DELETE FROM ${table.simpleName} WHERE &quot;)</span>
-
-<span class="nc" id="L21">  primaryKeys.forEachIndexed { index, key -&gt;</span>
-<span class="nc" id="L22">    sql.append(&quot;$key = '&quot;)</span>
-
-<span class="nc bnc" id="L24" title="All 2 branches missed.">    if (index &lt; primaryKeys.size - 1) {</span>
-<span class="nc" id="L25">      sql.append(&quot;, &quot;)</span>
-    }
-<span class="nc" id="L27">  }</span>
-
-<span class="nc" id="L29">  &quot;Output SQL: `$sql`&quot;.send()</span>
-<span class="nc" id="L30">  return this</span>
->>>>>>> a3822c306af7f0af632c78d013ca65dc06b3610f
+<span class="nc" id="L37">  update(sql.toString())</span>
+<span class="nc" id="L38">  return this</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

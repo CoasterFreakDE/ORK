@@ -3,6 +3,7 @@ package cloud.melion.extensions
 
 import cloud.melion.annotations.PrimaryKey
 import cloud.melion.base.getConstructor
+import cloud.melion.base.update
 import cloud.melion.interfaces.ITable
 import kotlin.reflect.jvm.kotlinProperty
 
@@ -33,5 +34,6 @@ fun <T : ITable> T.delete(): T {
   }
 
   "Output SQL: `$sql`".send()
+  update(sql.toString())
   return this
 }

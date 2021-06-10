@@ -18,7 +18,7 @@ repositories {
 #### Add it to your dependencies
 ```
 dependencies {
-	compile 'com.github.CoasterFreakDE:ork:0.6-SNAPSHOT'
+	compile 'com.github.CoasterFreakDE:ork:0.7-SNAPSHOT'
 }
 ```
 
@@ -39,7 +39,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.CoasterFreakDE</groupId>
 	<artifactId>ork</artifactId>
-	<version>0.6-SNAPSHOT</version>
+	<version>0.7-SNAPSHOT</version>
 </dependency>
 ```
 

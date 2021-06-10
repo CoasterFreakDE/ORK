@@ -6,7 +6,6 @@ import cloud.melion.interfaces.ITable
 import cloud.melion.utils.ObjectMapper
 import java.util.*
 import kotlin.reflect.jvm.ExperimentalReflectionOnLambdas
-import kotlin.reflect.jvm.reflect
 
 inline fun <reified T : ITable> search(fields: Map<String, Any>): Optional<List<T>> {
   val table = T::class.java
@@ -30,7 +29,6 @@ inline fun <reified T : ITable> search(fields: Map<String, Any>): Optional<List<
   val list = ObjectMapper.map<T>(resultSet)
   return Optional.of(list)
 }
-
 
 @OptIn(ExperimentalReflectionOnLambdas::class)
 inline fun <reified T : ITable> select(noinline dsl: T.() -> Unit): Optional<List<T>> {
