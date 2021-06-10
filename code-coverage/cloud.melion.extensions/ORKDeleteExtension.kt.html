@@ -16,18 +16,17 @@ fun &lt;T : ITable&gt; T.delete(): T {
 <span class="nc" id="L16">    return this</span>
   }
 
-<span class="nc" id="L19">  println(&quot;Deleting ${table.simpleName}&quot;)</span>
-<span class="nc" id="L20">  val sql = StringBuilder(&quot;DELETE FROM ${table.simpleName} WHERE &quot;)</span>
+<span class="nc" id="L19">  val sql = StringBuilder(&quot;DELETE FROM ${table.simpleName} WHERE &quot;)</span>
 
-<span class="nc" id="L22">  primaryKeys.forEachIndexed { index, key -&gt;</span>
-<span class="nc" id="L23">    sql.append(&quot;$key = '&quot;)</span>
+<span class="nc" id="L21">  primaryKeys.forEachIndexed { index, key -&gt;</span>
+<span class="nc" id="L22">    sql.append(&quot;$key = '&quot;)</span>
 
-<span class="nc bnc" id="L25" title="All 2 branches missed.">    if (index &lt; primaryKeys.size - 1) {</span>
-<span class="nc" id="L26">      sql.append(&quot;, &quot;)</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">    if (index &lt; primaryKeys.size - 1) {</span>
+<span class="nc" id="L25">      sql.append(&quot;, &quot;)</span>
     }
-<span class="nc" id="L28">  }</span>
+<span class="nc" id="L27">  }</span>
 
-<span class="nc" id="L30">  &quot;Output SQL: `$sql`&quot;.send()</span>
-<span class="nc" id="L31">  return this</span>
+<span class="nc" id="L29">  &quot;Output SQL: `$sql`&quot;.send()</span>
+<span class="nc" id="L30">  return this</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

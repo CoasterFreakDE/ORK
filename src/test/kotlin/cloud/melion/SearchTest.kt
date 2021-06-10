@@ -5,6 +5,7 @@ import cloud.melion.base.createTable
 import cloud.melion.dsl.connect
 import cloud.melion.extensions.save
 import cloud.melion.extensions.search
+import cloud.melion.extensions.select
 import cloud.melion.testdata.*
 import java.nio.file.Path
 import java.util.*
@@ -74,6 +75,11 @@ class SearchTest {
       for (table in tables) {
         assertEquals("Hello", table.gamegroup)
       }
+    }
+
+
+    select<ValidTables> {
+      uuid = UUID.randomUUID()
     }
   }
 }
