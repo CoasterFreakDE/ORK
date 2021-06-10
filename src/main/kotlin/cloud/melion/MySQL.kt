@@ -60,4 +60,14 @@ object MySQL {
       e.printStackTrace()
     }
   }
+
+  fun onQuery(sql: String): ResultSet? {
+    try {
+      val stmt = conn!!.createStatement()
+      return stmt.executeQuery(sql)
+    } catch (e: Exception) {
+      e.printStackTrace()
+    }
+    return null
+  }
 }
