@@ -4,6 +4,7 @@ package cloud.melion.extensions
 import cloud.melion.annotations.PrimaryKey
 import cloud.melion.base.getConstructor
 import cloud.melion.interfaces.ITable
+import kotlin.reflect.jvm.kotlinProperty
 
 fun <T : ITable> T.delete(): T {
   val table = this::class.java
@@ -20,7 +21,12 @@ fun <T : ITable> T.delete(): T {
   val sql = StringBuilder("DELETE FROM ${table.simpleName} WHERE ")
 
   primaryKeys.forEachIndexed { index, key ->
-    sql.append("$key = '")
+    sql.append("$key = ")
+
+    val value = table.getDeclaredField(key).kotlinProperty?.getter?.call(this)
+    if (value != null) {
+      sql.append("'$value'")
+    }
 
     if (index < primaryKeys.size - 1) {
       sql.append(", ")

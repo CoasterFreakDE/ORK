@@ -4,30 +4,36 @@ package cloud.melion.extensions
 import cloud.melion.annotations.PrimaryKey
 import cloud.melion.base.getConstructor
 import cloud.melion.interfaces.ITable
+import kotlin.reflect.jvm.kotlinProperty
 
 fun &lt;T : ITable&gt; T.delete(): T {
-<span class="nc" id="L9">  val table = this::class.java</span>
-<span class="nc bnc" id="L10" title="All 4 branches missed.">  assert(table.isAnnotationPresent(PrimaryKey::class.java))</span>
-<span class="nc" id="L11">  val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys</span>
-<span class="nc" id="L12">  val constructor = getConstructor(table, primaryKeys)</span>
+<span class="nc" id="L10">  val table = this::class.java</span>
+<span class="nc bnc" id="L11" title="All 4 branches missed.">  assert(table.isAnnotationPresent(PrimaryKey::class.java))</span>
+<span class="nc" id="L12">  val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys</span>
+<span class="nc" id="L13">  val constructor = getConstructor(table, primaryKeys)</span>
 
-<span class="nc bnc" id="L14" title="All 2 branches missed.">  if (constructor == null) {</span>
-<span class="nc" id="L15">    println(&quot;No Constructor found for ${table.simpleName}&quot;)</span>
-<span class="nc" id="L16">    return this</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">  if (constructor == null) {</span>
+<span class="nc" id="L16">    println(&quot;No Constructor found for ${table.simpleName}&quot;)</span>
+<span class="nc" id="L17">    return this</span>
   }
 
-<span class="nc" id="L19">  println(&quot;Deleting ${table.simpleName}&quot;)</span>
-<span class="nc" id="L20">  val sql = StringBuilder(&quot;DELETE FROM ${table.simpleName} WHERE &quot;)</span>
+<span class="nc" id="L20">  println(&quot;Deleting ${table.simpleName}&quot;)</span>
+<span class="nc" id="L21">  val sql = StringBuilder(&quot;DELETE FROM ${table.simpleName} WHERE &quot;)</span>
 
-<span class="nc" id="L22">  primaryKeys.forEachIndexed { index, key -&gt;</span>
-<span class="nc" id="L23">    sql.append(&quot;$key = '&quot;)</span>
+<span class="nc" id="L23">  primaryKeys.forEachIndexed { index, key -&gt;</span>
+<span class="nc" id="L24">    sql.append(&quot;$key = &quot;)</span>
 
-<span class="nc bnc" id="L25" title="All 2 branches missed.">    if (index &lt; primaryKeys.size - 1) {</span>
-<span class="nc" id="L26">      sql.append(&quot;, &quot;)</span>
+<span class="nc bnc" id="L26" title="All 4 branches missed.">    val value = table.getDeclaredField(key).kotlinProperty?.getter?.call(this)</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">    if (value != null) {</span>
+<span class="nc" id="L28">      sql.append(&quot;'$value'&quot;)</span>
     }
-<span class="nc" id="L28">  }</span>
 
-<span class="nc" id="L30">  &quot;Output SQL: `$sql`&quot;.send()</span>
-<span class="nc" id="L31">  return this</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">    if (index &lt; primaryKeys.size - 1) {</span>
+<span class="nc" id="L32">      sql.append(&quot;, &quot;)</span>
+    }
+<span class="nc" id="L34">  }</span>
+
+<span class="nc" id="L36">  &quot;Output SQL: `$sql`&quot;.send()</span>
+<span class="nc" id="L37">  return this</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
