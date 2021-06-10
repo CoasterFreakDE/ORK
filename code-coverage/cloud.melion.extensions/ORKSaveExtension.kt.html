@@ -19,38 +19,37 @@ fun &lt;T : ITable&gt; T.save(): T {
 <span class="nc" id="L19">    return this</span>
   }
 
-<span class="fc" id="L22">  println(&quot;Saving ${table.simpleName}&quot;)</span>
-<span class="fc" id="L23">  val sql = StringBuilder(&quot;REPLACE INTO ${table.simpleName}(&quot;)</span>
+<span class="fc" id="L22">  val sql = StringBuilder(&quot;REPLACE INTO ${table.simpleName}(&quot;)</span>
 
-<span class="fc" id="L25">  constructor.parameterAnnotations.forEachIndexed { index, annotations -&gt;</span>
-<span class="fc" id="L26">    val annotation = annotations[0] as FieldName</span>
+<span class="fc" id="L24">  constructor.parameterAnnotations.forEachIndexed { index, annotations -&gt;</span>
+<span class="fc" id="L25">    val annotation = annotations[0] as FieldName</span>
 
-<span class="fc bfc" id="L28" title="All 2 branches covered.">    if (index &gt;= constructor.parameterAnnotations.size - 1) {</span>
-<span class="fc" id="L29">      sql.append(&quot;${annotation.name})&quot;)</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">    if (index &gt;= constructor.parameterAnnotations.size - 1) {</span>
+<span class="fc" id="L28">      sql.append(&quot;${annotation.name})&quot;)</span>
     } else {
-<span class="fc" id="L31">      sql.append(&quot;${annotation.name}, &quot;)</span>
+<span class="fc" id="L30">      sql.append(&quot;${annotation.name}, &quot;)</span>
     }
-<span class="fc" id="L33">  }</span>
+<span class="fc" id="L32">  }</span>
 
-<span class="fc" id="L35">  sql.append(&quot; VALUES(&quot;)</span>
+<span class="fc" id="L34">  sql.append(&quot; VALUES(&quot;)</span>
 
-<span class="fc" id="L37">  constructor.parameterAnnotations.forEachIndexed { index, annotations -&gt;</span>
-<span class="fc" id="L38">    val annotation = annotations[0] as FieldName</span>
+<span class="fc" id="L36">  constructor.parameterAnnotations.forEachIndexed { index, annotations -&gt;</span>
+<span class="fc" id="L37">    val annotation = annotations[0] as FieldName</span>
 
-<span class="pc bpc" id="L40" title="2 of 4 branches missed.">    val value = table.getDeclaredField(annotation.name).kotlinProperty?.getter?.call(this)</span>
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">    if (value != null) {</span>
-<span class="fc" id="L42">      sql.append(&quot;'$value'&quot;)</span>
+<span class="pc bpc" id="L39" title="2 of 4 branches missed.">    val value = table.getDeclaredField(annotation.name).kotlinProperty?.getter?.call(this)</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">    if (value != null) {</span>
+<span class="fc" id="L41">      sql.append(&quot;'$value'&quot;)</span>
     }
 
-<span class="fc bfc" id="L45" title="All 2 branches covered.">    if (index &gt;= constructor.parameterAnnotations.size - 1) {</span>
-<span class="fc" id="L46">      sql.append(&quot;)&quot;)</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">    if (index &gt;= constructor.parameterAnnotations.size - 1) {</span>
+<span class="fc" id="L45">      sql.append(&quot;)&quot;)</span>
     } else {
-<span class="fc" id="L48">      sql.append(&quot;, &quot;)</span>
+<span class="fc" id="L47">      sql.append(&quot;, &quot;)</span>
     }
-<span class="fc" id="L50">  }</span>
+<span class="fc" id="L49">  }</span>
 
-<span class="fc" id="L52">  &quot;Output SQL: `$sql`&quot;.send()</span>
-<span class="fc" id="L53">  update(sql.toString())</span>
-<span class="fc" id="L54">  return this</span>
+<span class="fc" id="L51">  &quot;Output SQL: `$sql`&quot;.send()</span>
+<span class="fc" id="L52">  update(sql.toString())</span>
+<span class="fc" id="L53">  return this</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -19,7 +19,6 @@ fun <T : ITable> T.save(): T {
     return this
   }
 
-  println("Saving ${table.simpleName}")
   val sql = StringBuilder("REPLACE INTO ${table.simpleName}(")
 
   constructor.parameterAnnotations.forEachIndexed { index, annotations ->
