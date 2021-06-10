@@ -17,7 +17,6 @@ fun <T : ITable> T.delete(): T {
     return this
   }
 
-  println("Deleting ${table.simpleName}")
   val sql = StringBuilder("DELETE FROM ${table.simpleName} WHERE ")
 
   primaryKeys.forEachIndexed { index, key ->

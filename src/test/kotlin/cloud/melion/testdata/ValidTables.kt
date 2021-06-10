@@ -9,7 +9,7 @@ import java.util.*
 @PrimaryKey("uuid")
 data class ValidTables(
     @FieldName("uuid")
-    val uuid: UUID = UUID.randomUUID()
+    var uuid: UUID = UUID.randomUUID()
 ) : ITable
 
 @PrimaryKey("uuid")
