@@ -133,4 +133,4 @@ Feel free to leave a pull request or ticket for feature requests.
 ### Code Coverage
 
 Try to cover as much as possible with tests.
-Check [here](https://CoasterFreakDE.github.io/ORK/target/jacoco-ut/)
+Check [here](https://CoasterFreakDE.github.io/ORK/code-coverage/)
