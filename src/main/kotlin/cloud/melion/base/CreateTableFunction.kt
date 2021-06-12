@@ -34,7 +34,7 @@ fun createTable(vararg tables: Class<*>) {
       try {
         val defaultValue = getDefaultValueOfParam(annotation)
         sql.append(" DEFAULT '$defaultValue'")
-      } catch (npe: NullPointerException) {}
+      } catch (_: NullPointerException) {}
       sql.append(", ")
     }
     sql.append("PRIMARY KEY(")

@@ -54,9 +54,9 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.7.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.7.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.2" level="project" />
-    <orderEntry type="library" name="Maven: com.diffplug.spotless:spotless-maven-plugin:2.11.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.diffplug.spotless:spotless-lib:2.13.5" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.diffplug.spotless:spotless-lib-extra:2.13.5" level="project" />
+    <orderEntry type="library" name="Maven: com.diffplug.spotless:spotless-maven-plugin:2.12.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.diffplug.spotless:spotless-lib:2.14.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.diffplug.spotless:spotless-lib-extra:2.14.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.googlecode.concurrent-trees:concurrent-trees:2.6.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.groovy:groovy-xml:3.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.groovy:groovy:3.0.8" level="project" />
