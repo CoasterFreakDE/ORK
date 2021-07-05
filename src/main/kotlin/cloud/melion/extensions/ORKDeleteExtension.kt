@@ -8,32 +8,32 @@ import cloud.melion.interfaces.ITable
 import kotlin.reflect.jvm.kotlinProperty
 
 fun <T : ITable> T.delete(): T {
-  val table = this::class.java
-  assert(table.isAnnotationPresent(PrimaryKey::class.java))
-  val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys
-  val constructor = getConstructor(table, primaryKeys)
+	val table = this::class.java
+	assert(table.isAnnotationPresent(PrimaryKey::class.java))
+	val primaryKeys = table.getAnnotation(PrimaryKey::class.java).keys
+	val constructor = getConstructor(table, primaryKeys)
 
-  if (constructor == null) {
-    println("No Constructor found for ${table.simpleName}")
-    return this
-  }
+	if (constructor == null) {
+		println("No Constructor found for ${table.simpleName}")
+		return this
+	}
 
-  val sql = StringBuilder("DELETE FROM ${table.simpleName} WHERE ")
+	val sql = StringBuilder("DELETE FROM ${table.simpleName} WHERE ")
 
-  primaryKeys.forEachIndexed { index, key ->
-    sql.append("$key = ")
+	primaryKeys.forEachIndexed { index, key ->
+		sql.append("$key = ")
 
-    val value = table.getDeclaredField(key).kotlinProperty?.getter?.call(this)
-    if (value != null) {
-      sql.append("'$value'")
-    }
+		val value = table.getDeclaredField(key).kotlinProperty?.getter?.call(this)
+		if (value != null) {
+			sql.append("'$value'")
+		}
 
-    if (index < primaryKeys.size - 1) {
-      sql.append(", ")
-    }
-  }
+		if (index < primaryKeys.size - 1) {
+			sql.append(", ")
+		}
+	}
 
-  "Output SQL: `$sql`".send()
-  update(sql.toString())
-  return this
+	"Output SQL: `$sql`".send()
+	update(sql.toString())
+	return this
 }

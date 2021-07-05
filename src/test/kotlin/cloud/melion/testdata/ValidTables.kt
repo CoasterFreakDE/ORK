@@ -8,24 +8,24 @@ import java.util.*
 
 @PrimaryKey("uuid")
 data class ValidTables(
-    @FieldName("uuid")
-    var uuid: UUID = UUID.randomUUID()
+	@FieldName("uuid")
+	var uuid: UUID = UUID.randomUUID()
 ) : ITable
 
 @PrimaryKey("uuid")
 data class ValidTableWithMultipleFields(
-    @FieldName("uuid")
-    val uuid: UUID = UUID.randomUUID(),
-    @FieldName("name", "Peter")
-    val name: String = "Peter"
+	@FieldName("uuid")
+	val uuid: UUID = UUID.randomUUID(),
+	@FieldName("name", "Peter")
+	val name: String = "Peter"
 ) : ITable
 
 @PrimaryKey("name", "gamegroup")
 data class ValidTableWithMultipleKeys(
-    @FieldName("name", "Peter")
-    val name: String = "Peter",
-    @FieldName("gamegroup", "Orks")
-    val gamegroup: String = "Orks",
-    @FieldName("xp", "0")
-    val xp: Int = 0,
+	@FieldName("name", "Peter")
+	val name: String = "Peter",
+	@FieldName("gamegroup", "Orks")
+	val gamegroup: String = "Orks",
+	@FieldName("xp", "0")
+	val xp: Int = 0,
 ) : ITable

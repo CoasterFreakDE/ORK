@@ -5,5 +5,5 @@ import cloud.melion.MySQL
 import cloud.melion.builder.ConnectionSettingsBuilder
 
 fun connect(settings: ConnectionSettingsBuilder.() -> Unit) {
-  MySQL.connect(ConnectionSettingsBuilder().apply(settings).build())
+	MySQL.connect(ConnectionSettingsBuilder().apply(settings).build())
 }
