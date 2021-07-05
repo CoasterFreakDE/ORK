@@ -59,7 +59,7 @@ class CreateTableTest {
 	}
 
 	@Test
-	fun `Testing if wrong Table with wrong fieldnames is not created`() {
+	fun `Testing if wrong Table with wrong FieldNames is not created`() {
 		assertThrows<WrongAnnotationError> { createTable(NoValidTableWithWrongFieldNames::class.java) }
 	}
 
