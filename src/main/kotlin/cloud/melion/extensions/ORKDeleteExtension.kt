@@ -1,12 +1,14 @@
 /* (C)2021 */
 package cloud.melion.extensions
 
+import cloud.melion.annotations.APIObject
 import cloud.melion.annotations.PrimaryKey
 import cloud.melion.base.getConstructor
 import cloud.melion.base.update
 import cloud.melion.interfaces.ITable
 import kotlin.reflect.jvm.kotlinProperty
 
+@APIObject
 fun <T : ITable> T.delete(): T {
 	val table = this::class.java
 	assert(table.isAnnotationPresent(PrimaryKey::class.java))
