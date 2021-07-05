@@ -3,13 +3,13 @@ package cloud.melion.base
 
 import cloud.melion.annotations.FieldName
 
-fun getDefaultValueOfParam(fieldParam: Any): String {
+fun getDefaultValueOfParam(fieldParam: Any) =
 	if (fieldParam is FieldName) {
 		if (fieldParam.defaultValue != "NULL") {
-			return fieldParam.defaultValue
+			fieldParam.defaultValue
 		} else {
 			throw NullPointerException("DefaultValue is null")
 		}
-	}
-	throw NullPointerException("FieldParam is null")
-}
+	} else
+		throw NullPointerException("FieldParam is null")
+
