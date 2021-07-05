@@ -5,7 +5,7 @@ import cloud.melion.base.createTable
 import cloud.melion.dsl.connect
 import cloud.melion.errors.NoConstructorFoundError
 import cloud.melion.errors.NoPrimaryKeyFoundError
-import cloud.melion.errors.WrongAnnotaionError
+import cloud.melion.errors.WrongAnnotationError
 import cloud.melion.extensions.save
 import cloud.melion.testdata.NoValidTable
 import cloud.melion.testdata.NoValidTableWithPrimaryKeys
@@ -60,12 +60,12 @@ class CreateTableTest {
 
 	@Test
 	fun `Testing if wrong Table with wrong fieldnames is not created`() {
-		assertThrows<WrongAnnotaionError> { createTable(NoValidTableWithWrongFieldNames::class.java) }
+		assertThrows<WrongAnnotationError> { createTable(NoValidTableWithWrongFieldNames::class.java) }
 	}
 
 	@Test
 	fun `Testing if wrong Table with wrong annotations is not created`() {
-		assertThrows<WrongAnnotaionError> { createTable(NoValidTableWithWrongAnnotation::class.java) }
+		assertThrows<WrongAnnotationError> { createTable(NoValidTableWithWrongAnnotation::class.java) }
 	}
 
 	@Test

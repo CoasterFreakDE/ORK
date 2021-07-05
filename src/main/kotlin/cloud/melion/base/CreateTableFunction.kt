@@ -6,7 +6,7 @@ import cloud.melion.annotations.FieldName
 import cloud.melion.annotations.PrimaryKey
 import cloud.melion.errors.NoConstructorFoundError
 import cloud.melion.errors.NoPrimaryKeyFoundError
-import cloud.melion.errors.WrongAnnotaionError
+import cloud.melion.errors.WrongAnnotationError
 import cloud.melion.extensions.send
 
 fun createTable(vararg tables: Class<*>) {
@@ -22,13 +22,13 @@ fun createTable(vararg tables: Class<*>) {
 
 		constructor.parameters.forEachIndexed { index, parameter ->
 			if (constructor.parameterAnnotations[index].isEmpty())
-				throw WrongAnnotaionError(table.simpleName)
+				throw WrongAnnotationError(table.simpleName)
 
 			val annotation =
 				constructor.parameterAnnotations[index].find { annotation ->
 					annotation is FieldName
 				} as FieldName?
-					?: throw WrongAnnotaionError(table.simpleName)
+					?: throw WrongAnnotationError(table.simpleName)
 
 			sql.append("${getNameOfParam(annotation)} ${getSQLTypeOrDefault(annotation, parameter.type)}")
 			try {
