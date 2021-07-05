@@ -11,16 +11,16 @@ import java.util.*
 object ObjectMapper {
 	val gson = Gson()
 
-	fun mapResultSet(rs: ResultSet): JsonArray {
-		val jArray = JsonArray()
+	fun mapResultSet(resultSet: ResultSet): JsonArray {
+		val jsonArray = JsonArray()
 		var jsonObject: JsonObject? = null
-		val rsmd = rs.metaData
-		val columnCount = rsmd.columnCount
-		while (rs.next()) {
+		val resultSetMetaData = resultSet.metaData
+		val columnCount = resultSetMetaData.columnCount
+		while (resultSet.next()) {
 			jsonObject = JsonObject()
 			for (index in 1..columnCount) {
-				val column = rsmd.getColumnName(index)
-				when (val value = rs.getObject(column)
+				val column = resultSetMetaData.getColumnName(index)
+				when (val value = resultSet.getObject(column)
 				) {
 					null -> jsonObject.addProperty(column, "")
 					is Int -> jsonObject.addProperty(column, value)
@@ -35,9 +35,9 @@ object ObjectMapper {
 					else -> throw IllegalArgumentException("Unmappable object type: " + value.javaClass)
 				}
 			}
-			jArray.add(jsonObject)
+			jsonArray.add(jsonObject)
 		}
-		return jArray
+		return jsonArray
 	}
 
 	inline fun <reified T> map(rs: ResultSet): List<T> {
