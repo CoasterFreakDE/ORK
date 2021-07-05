@@ -13,7 +13,7 @@ object ObjectMapper {
 
 	fun mapResultSet(resultSet: ResultSet): JsonArray {
 		val jsonArray = JsonArray()
-		var jsonObject: JsonObject? = null
+		var jsonObject: JsonObject
 		val resultSetMetaData = resultSet.metaData
 		val columnCount = resultSetMetaData.columnCount
 		while (resultSet.next()) {
