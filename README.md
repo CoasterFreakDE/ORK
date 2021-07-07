@@ -113,7 +113,7 @@ You can add all your tables into a single statement by separating them with a `,
 
 ### Saving/Updating/Deleting data
 
-Now here comes the fun part. As you will use these functions most of the time they need to be super simple.
+Now comes the fun part. Since you'll be using these features most of the time, they need to be super simple.
 
 ```kotlin
 	val myDataToSave = MyTable("Hulk")

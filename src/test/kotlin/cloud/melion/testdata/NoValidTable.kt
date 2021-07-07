@@ -13,22 +13,22 @@ class NoValidTableWithPrimaryKeys : ITable
 
 @PrimaryKey("uuid")
 data class NoValidTableWithoutDefaultValue(
-    @FieldName("uuid")
-    var uuid: UUID
+	@FieldName("uuid")
+	var uuid: UUID
 ) : ITable
 
 @PrimaryKey("nope")
 class NoValidTableWithWrongFieldNames(
-    @FieldName("nope")
-    val nope: String,
-    val whatIsThis: String
+	@FieldName("nope")
+	val nope: String,
+	val whatIsThis: String
 ) : ITable
 
 annotation class TestAnnotation
 
 @PrimaryKey("nope")
 class NoValidTableWithWrongAnnotation(
-    @FieldName("nope")
-    val nope: String,
-    @TestAnnotation val whatIsThis: String
+	@FieldName("nope")
+	val nope: String,
+	@TestAnnotation val whatIsThis: String
 ) : ITable
